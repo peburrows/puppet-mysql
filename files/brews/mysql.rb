@@ -7,14 +7,24 @@ class Mysql < Formula
   version '5.6.19-boxen1'
 
   depends_on 'cmake' => :build
-  depends_on 'pidof'
+  depends_on 'pidof' unless MacOS.version >= :mountain_lion
+  depends_on 'openssl'
+
+  conflicts_with 'mysql-cluster', 'mariadb', 'percona-server',
+    :because => "mysql, mariadb, and percona install the same binaries."
+  conflicts_with 'mysql-connector-c',
+    :because => 'both install MySQL client libraries'
 
   fails_with :llvm do
     build 2326
     cause "https://github.com/mxcl/homebrew/issues/issue/144"
   end
 
-  skip_clean :all # So "INSTALL PLUGIN" can work.
+  bottle do
+    sha1 "ec7deacfc46454a65ee36b5399e2845f34a00816" => :mavericks
+    sha1 "ecd5ef4bfaca83afd870e36b9a78c7cf747a0de4" => :mountain_lion
+    sha1 "bda941306a34ec1d7bc58c7bea27052cf922eff8" => :lion
+  end
 
   option :universal
   option 'with-tests', 'Build with unit tests'
@@ -87,6 +97,9 @@ class Mysql < Formula
 
     # Build with debug support
     args << "-DWITH_DEBUG=1" if build.include? 'enable-debug'
+
+    # get rid of warning
+    args << "-Wno-dev"
 
     system "cmake", *args
     system "make"
