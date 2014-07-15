@@ -3,7 +3,8 @@ require 'formula'
 class Mysql < Formula
   homepage 'http://dev.mysql.com/doc/refman/5.5/en/'
   url 'http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.19-osx10.7-x86.tar.gz'
-  sha1 'c9bbdb5eacf607c58deca8a52942db9c'
+  # md5 'c9bbdb5eacf607c58deca8a52942db9c'
+  sha1 '92281678d20d88e7192269483844061fb98fd384'
   version '5.6.19-boxen1'
 
   depends_on 'cmake' => :build
