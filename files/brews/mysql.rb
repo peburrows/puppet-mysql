@@ -32,7 +32,7 @@ class Mysql < Formula
   # This facilitates easy compilation of gems using a brewed mysql
   # CMake patch needed for CMake 2.8.8.
   # Reported here: http://bugs.mysql.com/bug.php?id=65050
-  def patches; DATA; end
+  # def patches; DATA; end
 
   def install
     args = [".",
