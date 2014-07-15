@@ -2,9 +2,9 @@ require 'formula'
 
 class Mysql < Formula
   homepage 'http://dev.mysql.com/doc/refman/5.5/en/'
-  url 'http://downloads.mysql.com/archives/mysql-5.5/mysql-5.5.20.tar.gz'
-  sha1 'd5066327c41ac5a338ca0bb748e50bc4e1902442'
-  version '5.5.20-boxen2'
+  url 'http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.19-osx10.7-x86.tar.gz'
+  sha1 'c9bbdb5eacf607c58deca8a52942db9c'
+  version '5.6.19-boxen1'
 
   depends_on 'cmake' => :build
   depends_on 'pidof'
